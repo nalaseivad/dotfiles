@@ -1,4 +1,5 @@
 ;; -*- mode: emacs-lisp -*-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Notes
 ;;
@@ -26,11 +27,12 @@
 ;; >> Platform specific
 
 ;;
-;; If running on a FactSet node ... then load common config
+;; If running on a FactSet node ... then load the common config
 ;;
 (if (file-exists-p "/home/fonix/prd_progs/tools/conf/emacs/fds-common.el")
-    ((add-to-list 'load-path "/home/fonix/prd_progs/tools/conf/emacs/")
-     (load "fds-common")))
+    (progn
+      (add-to-list 'load-path "/home/fonix/prd_progs/tools/conf/emacs/")
+      (load "fds-common")))
 
 ;; << Platform specific
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -85,9 +87,11 @@
 ;; Scroll bar on the right please
 (set-scroll-bar-mode 'right)
 
+;;
 ;; Get rid of that illegible dark blue in the mini-buffer when running with a
 ;; black background, which I like to do.  This may only be a problem in character
 ;; mode emacs (I don't remember) but I'll just set it anyway.
+;;
 (set-face-foreground 'minibuffer-prompt "cyan")
 
 ;; Make scrolling off the visible edges of a buffer less jarring
@@ -118,7 +122,6 @@
  auto-save-timeout 20              ; # seconds idle time before auto-save
  auto-save-interval 200)           ; # keystrokes between auto-saves
 
-
 ;; Use CPerl-mode for Perl files
 (add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
@@ -127,7 +130,6 @@
 
 ;; << Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -166,8 +168,6 @@
 
 (global-set-key (kbd "C-<backspace>") 'backward-kill-word)
 (global-set-key (kbd "C-<delete>") 'kill-word)
-
-;;(global-set-key (kbd "C-v") 'yank)
 
 ;;
 ;; CUA-Mode (http://www.emacswiki.org/emacs/CuaMode)
@@ -219,81 +219,66 @@
 ;;
 
 ;;
-;; Color settings that apply across all modes
+;; Note that there can only be one (custom-set-faces ...) section in .emacs
 ;;
 (custom-set-faces
-  '(font-lock-comment-face  ((t (:foreground "green"))))
-  '(font-lock-keyword-face  ((t (:foreground "magenta1"))))
-  '(font-lock-string-face  ((t (:foreground "brown"))))
-  '(font-lock-constant-face  ((t (:foreground "red"))))
-  '(font-lock-function-name-face  ((t (:foreground "red"))))
-  '(font-lock-variable-name-face  ((t (:foreground "white"))))
-  '(font-lock-builtin-face  ((t (:foreground "yellow"))))
-  '(font-lock-type-face  ((t (:foreground "yellow"))))
-  '(font-lock-warning-face  ((t (:foreground "red"))))
-)
+ ;; Default text.
+ ;; Set this to white foreground and black background so that I don't need to
+ ;; pass -rv when I launch Emacs.
+ '(default ((t (:background "#000000" :foreground "#ffffff" :inverse-video nil
+                            :box nil :strike-through nil :overline nil
+                            :underline nil :slant normal :weight normal
+                            :height 100 :width normal :foundry "outline"
+                            :family "Courier New"))))
+ 
+ ;; Settings for elements across all language modes
+ '(font-lock-builtin-face ((t (:foreground "slate grey"))))
+ '(font-lock-comment-face ((t (:foreground "lime green"))))
+ '(font-lock-constant-face ((t (:foreground "SpringGreen1"))))
+ '(font-lock-function-name-face ((t (:foreground "plum"))))
+ '(font-lock-keyword-face ((t (:foreground "cornflower blue"))))
+ '(font-lock-string-face ((t (:foreground "dark salmon"))))
+ '(font-lock-type-face ((t (:foreground "pale green"))))
+ '(font-lock-variable-name-face ((t (:foreground "khaki1"))))
+ '(font-lock-warning-face ((t (:foreground "red"))))
+ 
+ ;; CPerl-mode
+ '(cperl-array-face ((t (:foreground "khaki1"))))
+ '(cperl-hash-face ((t (:foreground "khaki1"))))
+ '(cperl-invalid-face ((t (:background "OrangeRed1"))))
+ '(cperl-nonoverridable-face ((t (:foreground "pale green"))))
+ )
 
+;;
+;; Indenting
+;;
 
 ;;
 ;; CPerl-mode (<emacs_install_dir>/lisp/progmodes/cperl-mode.el)
 ;;
-(setq-default cperl-continued-brace-offset -2)
-(custom-set-faces
-  '(cperl-array-face ((t (:foreground "SlateBlue1"))))
-  '(cperl-hash-face  ((t (:foreground "OrangeRed1"))))
-  '(cperl-invalid-face  ((t (:background "OrangeRed1"))))
-)
+(setq-default cperl-continued-brace-offset -2
+              cperl-close-paren-offset -2
+              cperl-continued-statement-offset 2
+              cperl-indent-parens-as-block t)
 
-
-
-;; << Customization of modes
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
-
-
-;
-; Customization of c-mode
-;
-; Indent 2 spaces
-(setq c-basic-indent 2)
-; Disable indent for { on newline under if(), while(), ...
+;;
+;; C-Mode
+;;
+(setq-default c-basic-indent 2)
+;; Disable indent for { on newline under if(), while(), ...
 (defun my-c-mode-common-hook ()
   (c-set-offset 'substatement-open 0)
   )
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
-;
-; Customization of Perl-mode
-;
-;(setq perl-indent-level 2)
-;(setq perl-tab-to-comment nil)
+;;
+;; Text-mode
+;;
+(setq-default tab-width 2
+              indent-line-function 'insert-tab)
 
-;
-; Customization of Text-mode
-;
-;(setq-default indent-tabs-mode nil)
-;(setq-default tab-width 2)
-;(setq indent-line-function 'insert-tab)
-
-;(custom-set-faces
-;  ;; custom-set-faces was added by Custom.
-;  ;; If you edit it by hand, you could mess it up, so be careful.
-;  ;; Your init file should contain only one such instance.
-;  ;; If there is more than one, they won't work right.
-; '(cperl-array-face ((t (:foreground "yellow"))))
-; '(cperl-hash-face ((t (:foreground "Red"))))
-; '(font-lock-function-name-face ((((class color) (min-colors 88) (background light)) (:foreground "brightblue"))))
-; '(highlight ((((class color) (min-colors 88) (background light)) (:background "cyan")))))
-
-;(custom-set-variables
-;  ;; custom-set-variables was added by Custom.
-;  ;; If you edit it by hand, you could mess it up, so be careful.
-;  ;; Your init file should contain only one such instance.
-;  ;; If there is more than one, they won't work right.
-; '(tab-stop-list (quote (2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80 82 84 86 88 90 92 94 96 98 100 102 104 106 108 110 112 114 116 118 120))))
-
+;; << Customization of modes
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (message "Finished running .emacs")
