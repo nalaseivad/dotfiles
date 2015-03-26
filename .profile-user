@@ -37,6 +37,18 @@ echo ">> $wd/.profile-user"
 ################################################################################
 
 
+#
+# Detect OS
+#
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='mac'
+fi
+
+
 ################################################################################
 # ls
 #
@@ -47,8 +59,14 @@ echo ">> $wd/.profile-user"
 #  * The following eval will set and export LS_COLORS in the environment
 #  * Then the alias for ls will use color as specified via $LS_COLORS
 #
-eval "`dircolors -b ~/.dircolorsrc`"
-alias ls='ls --color=auto'
+
+if [[ $platform == 'linux' ]]; then
+  eval "`dircolors -b ~/.dircolorsrc`"
+  alias ls='ls --color=auto'
+elif [[ $platform == 'freebsd' ]]; then
+  alias ls='ls -G'
+fi
+
 #
 # Other shortcuts
 #
