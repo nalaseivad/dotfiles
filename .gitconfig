@@ -2,7 +2,6 @@
 # This is the global config file for Git.  Comments are prefixed with # or ;
 #
 
-
 # Me
 [user]
 	name = Alan Davies
@@ -35,3 +34,7 @@
   trustExitCode = false
 [diff]
   external = p4Diff
+
+# Default push behavior
+[push]
+	default = simple
