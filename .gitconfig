@@ -1,0 +1,37 @@
+#
+# This is the global config file for Git.  Comments are prefixed with # or ;
+#
+
+
+# Me
+[user]
+	name = Alan Davies
+	email = alan-davies@users.noreply.github.com
+
+# Don't make me use vi ...
+[core]
+	editor = emacs
+
+#
+# Use an external diff/merge tool, in this case the freely available p4merge.
+# Get it from ...
+#   http://www.perforce.com/product/components/perforce-visual-merge-and-diff-tools
+#
+# Then create the following two wrapper scripts and place them somewhere in the
+# system path (e.g. /usr/local/bin/)
+# 
+# [alan@derpy ~/github/dotfiles]$cat /usr/local/bin/p4Merge
+# #!/bin/sh
+# /Applications/p4merge.app/Contents/MacOS/p4merge $*
+# [alan@derpy ~/github/dotfiles]$cat /usr/local/bin/p4Diff
+# #!/bin/sh
+# [ $# -eq 7 ] && /usr/local/bin/p4Merge "$2" "$5"
+# [alan@derpy ~/github/dotfiles]$
+#
+[merge]
+  tool = p4Merge
+[mergetool "p4Merge"]
+  cmd = p4Merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+  trustExitCode = false
+[diff]
+  external = p4Diff
