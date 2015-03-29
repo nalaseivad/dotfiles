@@ -8,9 +8,6 @@
 #     alias foo = "bar"   # not ok
 # * export seems more forgiving though
 #
-#
-#
-#
 ################################################################################
 
 
@@ -34,6 +31,24 @@ echo ">> $wd/.profile-user"
 #       - I think this is necessary if I want to run X apps back to the PC
 #         from which I am running PuTTY.  I will need to have an X Server
 #         (e.g. http://xfree86.cygwin.com/) installed.
+#
+################################################################################
+
+################################################################################
+# SSH notes
+#
+# If using PuTTY to connect to this host (via SSH) then configure things as
+# specified above.  However, if using command line SSH to connect from another
+# host (e.g. from Terminal on a Mac) then pass -X to ssh in order to enable X11
+# forwarding on the connection.  For example:
+#
+# $ ssh -X <user>@<host>
+#
+# This will only work if X11 forwarding is enabled in /etc/ssh/sshd_config via
+# this line ...
+#
+#   X11Forwarding yes
+# 
 ################################################################################
 
 
@@ -43,28 +58,37 @@ echo ">> $wd/.profile-user"
 platform='unknown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
-   platform='linux'
+  platform='linux'
+  #echo "Platform == Linux"
 elif [[ "$unamestr" == 'Darwin' ]]; then
-   platform='mac'
+  platform='mac'
+  #echo "Platform == Mac"
 fi
 
 
 ################################################################################
 # ls
 #
-# Colors
-#  * Edit the .dircolors file to specify the color of each filetype
-#  * To create the initial dircolors file if it doesn't exist yet run this
-#     $ dircolors -p > .dircolors
-#  * The following eval will set and export LS_COLORS in the environment
-#  * Then the alias for ls will use color as specified via $LS_COLORS
+detail='-pF'  # Add trailing characters to directory list items
+              # / for directories, * for executables, @ for sym links, etc.
 #
-
+# Colors
+#   On Linux ...
+#     * Edit the .dircolors file to specify the color of each filetype
+#     * To create the initial dircolors file if it doesn't exist yet run this
+#       $ dircolors -p > .dircolors
+#     * The eval linr below will set and export LS_COLORS in the environment
+#     * Alias ls to use color as specified via $LS_COLORS
+#   On Mac OSX ...
+#     * Specify the colors via the LSCOLORS environment variable
+#     * Alias ls to use color as specified via $LSCOLORS
+#
 if [[ $platform == 'linux' ]]; then
   eval "`dircolors -b ~/.dircolorsrc`"
-  alias ls='ls --color=auto'
-elif [[ $platform == 'freebsd' ]]; then
-  alias ls='ls -G'
+  alias ls='ls --color=auto $detail'
+elif [[ $platform == 'mac' ]]; then
+  export LSCOLORS="gxbxhxDxfxhxhxhxhxcxcx"
+  alias ls='ls -G $detail'
 fi
 
 #
@@ -155,9 +179,13 @@ if [ -x /bin/less ]; then
   export PAGER=less
 fi
 
-PS1='[\[\033[31;1m\u\[\033[0m@\[\033[94;1m\h\[\033[0m \[\033[32m\w\[\033[0m]$ '
-export PS1
-
+#
+# Prompt:  [<user>@<host> <dir>]$  with <dir> in green and <user>/<host> cyan
+#
+STARTCYAN='\e[0;36m'
+STARTGREEN='\e[0;32m'
+ENDCOLOR='\e[0m'
+export PS1="[$STARTCYAN\u@\h$ENDCOLOR $STARTGREEN\w$ENDCOLOR]$"
 
 
 # Prevent CTRL-s from messing up putty at the command line
