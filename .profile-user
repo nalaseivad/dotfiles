@@ -195,6 +195,16 @@ stty -ixon
 ################################################################################
 
 
+################################################################################
+# Load additional (pottentially host specific) config from .profile.d/
+#
+
+for f in ~/.profile.d/*; do source $f; done
+
+#
+################################################################################
+
+
 echo ""
 echo "Welcome to `uname -s` `uname -r` on node `uname -n`"
 echo ""
