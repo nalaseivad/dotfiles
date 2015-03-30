@@ -164,9 +164,6 @@ then
   export PATH="/home/fonix/prd_progs/bin:$PATH"
   
   export DISPLAY="daviespc.pc.factset.com:0"
-
-  # This seems to make tmux happier than the default
-  export TERM=xterm-256color
 fi
 #
 ################################################################################
@@ -175,6 +172,9 @@ fi
 ################################################################################
 # Misc
 #
+
+export TERM=xterm-256color
+
 if [ -x /bin/less ]; then
   export PAGER=less
 fi
@@ -186,7 +186,6 @@ STARTCYAN='\e[0;36m'
 STARTGREEN='\e[0;32m'
 ENDCOLOR='\e[0m'
 export PS1="[$STARTCYAN\u@\h$ENDCOLOR $STARTGREEN\w$ENDCOLOR]$"
-
 
 # Prevent CTRL-s from messing up putty at the command line
 # See: http://goo.gl/JEPbWh
