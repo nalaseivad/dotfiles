@@ -128,6 +128,10 @@
 (add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
 
+;; Use js2-mode for JavaScript and JSON files
+(add-to-list 'auto-mode-alist '("\\.\\([jJ][sS]\\)\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.\\([jJ][sS][oO][nN]\\)\\'" . js2-mode))
+
 ;; << Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -276,6 +280,12 @@
 ;;
 (setq-default tab-width 2
               indent-line-function 'insert-tab)
+
+;;
+;; JavaScript (js2-mode)
+;;
+(custom-set-variables
+ '(js2-basic-offset 2))
 
 ;; << Customization of modes
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
