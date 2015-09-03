@@ -105,28 +105,6 @@ alias lls='ls -lSr'                # List files by size
 
 
 ################################################################################
-# Emacs
-#
-emacsbin=`which emacs`
-#
-# Running character mode Emacs with -rv sometimes works and sometimes does not.
-# Assuming that I have set my default terminal foreground and background colors
-# in PuTTY as above then Emacs should run with the same colors and achieve the
-# effect of -rv anyway.
-#
-alias emacs="$emacsbin -nw"
-#
-# Running Emacs with X will not respect my terminal foreground/background colors
-# and so I need to pass -rv on the command line in order to get reverse video.
-# I should look in to whether I need this if I config my colors in my .emacs
-# file though.  The 6x13 font works well most of the time.
-#
-alias xemacs="$emacsbin &"
-#
-################################################################################
-
-
-################################################################################
 # FactSet stuff
 #
 if [[ -e /var/cfengine/classes/nextgen ]]
@@ -165,6 +143,31 @@ then
   
   export DISPLAY="daviespc.pc.factset.com:0"
 fi
+#
+################################################################################
+
+
+################################################################################
+# Emacs
+#
+# I need to put this section AFTER loading FactSet shared stuff since I want to
+# re-alias xemacs which the FactSet shared config aliases.
+#
+emacsbin=`which emacs`
+#
+# Running character mode Emacs with -rv sometimes works and sometimes does not.
+# Assuming that I have set my default terminal foreground and background colors
+# in PuTTY as above then Emacs should run with the same colors and achieve the
+# effect of -rv anyway.
+#
+alias emacs="$emacsbin -nw"
+#
+# Running Emacs with X will not respect my terminal foreground/background colors
+# and so I need to pass -rv on the command line in order to get reverse video.
+# I should look in to whether I need this if I config my colors in my .emacs
+# file though.  The 6x13 font works well most of the time.
+#
+alias xemacs="$emacsbin &"
 #
 ################################################################################
 
