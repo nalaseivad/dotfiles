@@ -65,6 +65,19 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
   #echo "Platform == Mac"
 fi
 
+#
+# Host specific setup.  Commands to set things up for a given host so that the
+# rest of this script can run as is.  For example, on one Linux machine that I
+# use it has emacs installed but with the executable emacs-23.1 as opposed to
+# emacs.  This script assumes that I can call 'which emacs' in order to get the
+# path to the binary so I need to first alias emacs to emacs-23.1 so that emacs
+# will be known to the rest of the script.  This is a host-specific step and so
+# I put it in .bashrc-host (on that one host only); I do NOT share .bashrc-host
+# between Linux hosts.
+#
+if [ -f ~/.bashrc-host ]; then
+    source ~/.bashrc-host
+fi
 
 ################################################################################
 # ls
@@ -96,6 +109,7 @@ fi
 #
 alias ll='ls -l'                   # Long List
 alias lla='ls -al'                 # Long List (inc .* files)
+alias ll.='ls -ld .*'              # Long List of just .* files
 alias ld='tree -d -L 1'            # List directories in the current directory
 alias lda='tree -ad -L 1'          # Include .* directories
 alias llt='ls -ltr'                # List files by modification time
@@ -151,9 +165,11 @@ fi
 # Emacs
 #
 # I need to put this section AFTER loading FactSet shared stuff since I want to
-# re-alias xemacs which the FactSet shared config aliases.
+# re-alias xemacs which the FactSet shared config aliases.  Also, the output of
+# 'which' could be multi-line if we are resolving aliases so I want to just take
+# the last line (the final resolved binary) and trim off any spaces.
 #
-emacsbin=`which emacs`
+emacsbin=`which emacs | tail -n 1 | sed "s/\s//g"`
 #
 # Running character mode Emacs with -rv sometimes works and sometimes does not.
 # Assuming that I have set my default terminal foreground and background colors
@@ -203,7 +219,9 @@ stty -ixon
 #
 
 if [ -d ~/.profile.d ]; then
-  for f in ~/.profile.d/*; do source $f; done
+  if [ -f ~/.profile.d/* ]; then
+    for f in ~/.profile.d/*; do source $f; done
+  fi
 fi
 
 #
