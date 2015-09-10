@@ -10,9 +10,9 @@
 #
 ################################################################################
 
-
+thisfile='.bashrc'
 wd=`pwd`
-echo ">> $wd/.profile-user"
+echo ">> $wd/$thisfile"
 
 
 ################################################################################
@@ -213,4 +213,4 @@ fi
 echo ""
 echo "Welcome to `uname -s` `uname -r` on node `uname -n`"
 echo ""
-echo "<< $wd/.profile-user"
+echo "<< $wd/$thisfile"
