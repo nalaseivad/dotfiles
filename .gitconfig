@@ -34,7 +34,3 @@
   trustExitCode = false
 [diff]
   external = p4Diff
-
-# Default push behavior
-[push]
-  default = simple
