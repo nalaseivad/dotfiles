@@ -169,7 +169,7 @@ fi
 # 'which' could be multi-line if we are resolving aliases so I want to just take
 # the last line (the final resolved binary) and trim off any spaces.
 #
-emacsbin=`which emacs | tail -n 1 | sed "s/\s//g"`
+emacsbin=`which emacs | tail -n 1 | sed "s/\s+//g"`
 #
 # Running character mode Emacs with -rv sometimes works and sometimes does not.
 # Assuming that I have set my default terminal foreground and background colors

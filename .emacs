@@ -232,7 +232,7 @@
  '(default ((t (:background "#000000" :foreground "#ffffff" :inverse-video nil
                             :box nil :strike-through nil :overline nil
                             :underline nil :slant normal :weight normal
-                            :height 100 :width normal :foundry "outline"
+                            :height 110 :width normal :foundry "outline"
                             :family "Courier New"))))
  
  ;; Settings for elements across all language modes
