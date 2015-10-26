@@ -156,6 +156,8 @@ then
   export PATH="/home/fonix/prd_progs/bin:$PATH"
   
   export DISPLAY="daviespc.pc.factset.com:0"
+  
+  alias lima_ticket='/home/fds/svc_lima/bin/lima_token davies fds'
 fi
 #
 ################################################################################
