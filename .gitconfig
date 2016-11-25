@@ -1,0 +1,6 @@
+[user]
+	name = Alan Davies
+[core]
+	editor = emacs
+[push]
+	default = simple

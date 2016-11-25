@@ -256,8 +256,9 @@ ENDCOLOR='\e[0m'
 export PS1="[$STARTCYAN\u@\h$ENDCOLOR $STARTGREEN\w$ENDCOLOR]$"
 
 # Prevent CTRL-s from messing up putty at the command line
+# Only execute this for an interactive shell
 # See: http://goo.gl/JEPbWh
-stty -ixon
+[[ $- == *i* ]] && stty -ixon
 
 
 ################################################################################
