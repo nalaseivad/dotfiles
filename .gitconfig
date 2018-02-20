@@ -3,6 +3,7 @@
   name = Alan Davies
 
 [core]
+  # editor = emacs
   editor = /Applications/Emacs.App/Contents/MacOS/Emacs -nw
 
 [alias]
