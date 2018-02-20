@@ -5,7 +5,13 @@ wd=`pwd`
 echo ">> $wd/$thisfile"
 
 if [ -f ~/.bashrc ]; then
-    source ~/.bashrc
+  echo "sourcing ~/.bashrc ..."
+  source ~/.bashrc
+  echo "                   ... done"
 fi
 
+echo ""
+echo "Welcome to `uname -s` `uname -r` on node `uname -n`"
+echo ""
 echo "<< $wd/$thisfile"
+

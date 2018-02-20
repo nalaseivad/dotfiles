@@ -46,8 +46,8 @@
 
 ;; Turn off the menu bar and tool bar.
 ;; For each: +ve integer arg => turn on, -ve integer arg => turn off.
-(menu-bar-mode -1)
-(tool-bar-mode -1)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
 
 ;; No more startup screen
 (setq-default inhibit-startup-message t)
@@ -63,11 +63,13 @@
 (setq-default search-highlight t)
 
 ;; Text mode by default please
-'(default-major-mode "text-mode")
+(setq initial-major-mode 'text-mode)
+;; And lose the initial scratch buffer message
+(setq initial-scratch-message "")
 
 ;; Set the row width for wrapping.
 ;; The command to wrap lines in a block is M-q.
-(setq-default fill-column 80)
+(setq-default fill-column 120)
 
 ;; Tabs are spaces, period
 (setq-default indent-tabs-mode nil)
@@ -83,9 +85,6 @@
 
 ;; Diable adding extra blank rows when I move past the current end of the buffer
 (setq-default next-line-add-newlines nil)
-
-;; Scroll bar on the right please
-(set-scroll-bar-mode 'right)
 
 ;;
 ;; Get rid of that illegible dark blue in the mini-buffer when running with a
@@ -131,6 +130,9 @@
 ;; Use js2-mode for JavaScript and JSON files
 (add-to-list 'auto-mode-alist '("\\.\\([jJ][sS]\\)\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.\\([jJ][sS][oO][nN]\\)\\'" . js2-mode))
+
+;; Use text-mode for Git commit messages
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . text-mode))
 
 ;; << Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
