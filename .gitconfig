@@ -9,3 +9,4 @@
 [alias]
   aliases = "!git config -l | grep alias | cut -c 7-"
   lg = log --color --graph --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%C(white) %s %Creset%C(green)(%cr)%C(cyan)<%an>%Creset' --abbrev-commit
+  ls = ls-tree --full-tree -r HEAD
