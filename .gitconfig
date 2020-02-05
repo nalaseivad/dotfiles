@@ -3,8 +3,9 @@
   name = Alan Davies
 
 [core]
-  # editor = emacs
-  editor = /Applications/Emacs.App/Contents/MacOS/Emacs -nw
+  #editor = emacs    # Linux
+  #editor = /Applications/Emacs.App/Contents/MacOS/Emacs -nw    # Mac
+  editor = notepad    # Windows
 
 [alias]
   aliases = "!git config -l | grep alias | cut -c 7-"

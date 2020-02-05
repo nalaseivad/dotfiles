@@ -1,0 +1,13 @@
+{
+  "_comment" : "VS Code global user settings file: %UserProfile%\\AppData\\Roaming\\Code\\User\\settings.json",
+  "extensions.ignoreRecommendations": false,
+  "csharp.referencesCodeLens.enabled": false,
+  "editor.rulers": [
+    120
+  ],
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false
+}
