@@ -9,5 +9,10 @@
   "editor.formatOnType": true,
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "editor.detectIndentation": false
+  "editor.detectIndentation": false,
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingQuotes": "never",
+  "dotnet-test-explorer.showCodeLens": false,
+  "csharp.testsCodeLens.enabled": false,
+  "editor.codeLens": false
 }
