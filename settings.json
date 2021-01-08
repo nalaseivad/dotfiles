@@ -1,18 +1,25 @@
 {
-  "_comment" : "VS Code global user settings file: %UserProfile%\\AppData\\Roaming\\Code\\User\\settings.json",
-  "extensions.ignoreRecommendations": false,
+  // VSCode user settings file
+  // On Windows: %APPDATA%\Code\User\settings.json
+  // On Mac:     $HOME/Library/Application Support/Code/User/settings.json
+
+  // Remove CodeLens clutter from UI
+  "editor.codeLens": false,
+  "dotnet-test-explorer.showCodeLens": false,
+  "csharp.testsCodeLens.enabled": false,
   "csharp.referencesCodeLens.enabled": false,
-  "editor.rulers": [
-    120
-  ],
-  "editor.formatOnPaste": true,
-  "editor.formatOnType": true,
+
+  // Tabs and indentation
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
+
+  // Width indicator
+  "editor.rulers": [ 120 ],
+
+  // Code editing behavior
   "editor.autoClosingBrackets": "never",
   "editor.autoClosingQuotes": "never",
-  "dotnet-test-explorer.showCodeLens": false,
-  "csharp.testsCodeLens.enabled": false,
-  "editor.codeLens": false
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true
 }

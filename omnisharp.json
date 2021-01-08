@@ -1,6 +1,10 @@
 {
-  "_comment" : "VS Code Omnisharp global user settings file: %UserProfile%\\.omnisharp\\omnisharp.json",
+  "_comment1" : "VS Code Omnisharp global user settings file",
+  "_comment2" : "On Windows: %USERPROFILE%/.omnisharp/omnisharp.json",
+  "_comment3" : "On Mac: ~/.omnisharp/omnisharp.json",
   "FormattingOptions": {
+    "enableEditorConfigSupport": false,
+    "organizeImports": false,
     "NewLine": "\n",
     "UseTabs": false,
     "TabSize": 2,
@@ -41,7 +45,7 @@
     "NewLinesForBracesInMethods": true,
     "NewLinesForBracesInProperties": true,
     "NewLinesForBracesInAccessors": true,
-    "NewLinesForBracesInAnonymousMethods": true,
+    "NewLinesForBracesInAnonymousMethods": false,
     "NewLinesForBracesInControlBlocks": false,
     "NewLinesForBracesInAnonymousTypes": true,
     "NewLinesForBracesInObjectCollectionArrayInitializers": true,
