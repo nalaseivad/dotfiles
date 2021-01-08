@@ -35,7 +35,7 @@
     "SpacingAroundBinaryOperator": "single",
     "IndentBraces": false,
     "IndentBlock": true,
-    "IndentSwitchSection": true,
+    "IndentSwitchSection": false,
     "IndentSwitchCaseSection": true,
     "IndentSwitchCaseSectionWhenBlock": true,
     "LabelPositioning": "oneLess",
