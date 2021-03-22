@@ -56,7 +56,7 @@
 #      Function keys and keypad = ESC[n~
 #  * Connection/SSH/X11
 #      Check "Enable X11 forwarding"
-#        - I think this is necessary if I want to run X appsback to the PC
+#        - I think this is necessary if I want to run X apps back to the PC
 #          from which I am running PuTTY.  I will need to have an X Server
 #          (e.g. http://xfree86.cygwin.com/) installed.
 #
