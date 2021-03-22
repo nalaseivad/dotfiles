@@ -168,53 +168,6 @@ alias lda='tree -ad -L 1'          # Include .* directories
 alias llt='ls -ltr'                # List files by modification time
 alias lls='ls -lSr'                # List files by size
 
-
-################################################################################
-# FactSet stuff
-#
-if [[ -e /var/cfengine/classes/nextgen ]]
-then
-  if _interactive ; then
-    echo "*** This is a FactSet Fonix box - Configuring accordingly ***"
-  fi
-
-  # Source standard stuff
-  source /home/fonix/prd_progs/tools/engineering-login.sh
-  source /home/dev/fonix/prd_progs/build/build_environment_setup.sh
-
-  # Perforce config
-  export P4USER=davies
-  export P4PORT=scm.factset.com:1666
-  export P4CONFIG=.p4rc
-  export P4EDITOR="emacs -nw"
-
-  alias tmux='~/bin/tmux'
-  alias tree='~/bin/tree'
-
-  # Aliases for the fcd and fdb prefixes for $ fdb|fcd <command> invocations
-  alias fdb='source /home/fonix/prd_progs/fdb/fonix_utils_cover.sh fdb_utils_main'
-  alias fcd='source /home/fonix/prd_progs/fdb/fonix_utils_cover.sh fcd_utils_main'
-
-  # Usage:  rb <change_number>
-  alias rb='perl /home/data/index/script/common/submit_review_board.pl'
-
-  # Rakefds wrappers and shortcuts
-  alias senv='source /home/user/davies/scripts/senv.sh'
-  alias rkr='source /home/user/davies/scripts/rkr.sh'
-  alias rkd='source /home/user/davies/scripts/rkd.sh'
-
-  export DISABLE_FORMULA_LINUX_VERIFY=1
-
-  export PATH="/home/user/davies/bin:$PATH"
-  export LD_LIBRARY_PATH="/home/user/davies/local/lib:$LD_LIBRARY_PATH"
-  export PATH="/home/fonix/prd_progs/bin:$PATH"
-
-  export DISPLAY="daviespc.pc.factset.com:0"
-
-  alias lima_ticket='/home/fds/svc_lima/bin/lima_token davies fds'
-fi
-
-
 ################################################################################
 # Emacs
 #
