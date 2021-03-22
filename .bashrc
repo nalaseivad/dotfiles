@@ -56,7 +56,7 @@
 #      Function keys and keypad = ESC[n~
 #  * Connection/SSH/X11
 #      Check "Enable X11 forwarding"
-#        - I think this is necessary if I want to run X apps back to the PC
+#        - I think this is necessary if I want to run X appsback to the PC
 #          from which I am running PuTTY.  I will need to have an X Server
 #          (e.g. http://xfree86.cygwin.com/) installed.
 #
@@ -253,15 +253,23 @@ if [ -x /bin/less ]; then
   export PAGER=less
 fi
 
-# Prompt:  [<user>@<host> <dir>]$  with <dir> in green and <user>/<host> cyan
-STARTCYAN='\e[0;36m'
-STARTGREEN='\e[0;32m'
-ENDCOLOR='\e[0m'
-export PS1="[$STARTCYAN\u@\h$ENDCOLOR $STARTGREEN\w$ENDCOLOR]$"
+#
+# Shell Prompt
+#
+# I learnt that it's better to use tput than literal escape sequences for the
+# non-printable characters for coloring, and also that you have to wrap those
+# in \[ and \].
+# https://askubuntu.com/questions/24358/how-do-i-get-long-command-lines-to-wrap-to-the-next-line
+
+# Prompt:  [<user>@<host> <dir>]$  with <user>/<host> cyan and <dir> in green
+cyan=$(tput setaf 6)
+green=$(tput setaf 2)
+reset=$(tput sgr0)
+export PS1="[\[$cyan\]\u@\h\[$reset\] \[$green\]\w\[$reset\]]$"
 
 # Prevent CTRL-s from messing up putty at the command line
 # Only execute this for an interactive shell
-# See: http://goo.gl/JEPbWh
+# https://superuser.com/questions/124845/can-you-disable-the-ctrl-s-xoff-keystroke-in-putty/376881
 [[ $- == *i* ]] && stty -ixon
 
 
@@ -290,5 +298,3 @@ fi
 # Remove previously defined functions
 unset -f _have
 unset -f _interactive
-
-
