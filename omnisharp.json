@@ -53,7 +53,7 @@
     "NewLineForElse": true,
     "NewLineForCatch": true,
     "NewLineForFinally": true,
-    "NewLineForMembersInObjectInit": false,
+    "NewLineForMembersInObjectInit": true,
     "NewLineForMembersInAnonymousTypes": true,
     "NewLineForClausesInQuery": true
   }
