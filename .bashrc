@@ -169,10 +169,9 @@ alias lls='ls -lSr'                # List files by size
 ################################################################################
 # Emacs
 #
-# I need to put this section AFTER loading FactSet shared stuff since I want to
-# re-alias xemacs which the FactSet shared config aliases.  Also, the output of
-# 'which' could be multi-line if we are resolving aliases so I want to just take
-# the last line (the final resolved binary) and trim off any spaces.
+# The output of 'which' could be multi-line if we are resolving aliases so I
+# want to just take the last line (the final resolved binary) and trim off any
+# spaces.
 #
 if [[ $platform == 'mac' ]]; then
   emacsbin="/Applications/Emacs.app/Contents/MacOS/Emacs"
