@@ -101,9 +101,7 @@ wd=`pwd`
 
 if _interactive ; then
   echo ">> $wd/$thisfile"
-  echo ""
   echo "Welcome to `uname -s` `uname -r` on node `uname -n`"
-  echo ""
 fi
 
 
@@ -240,7 +238,6 @@ fi
 # Close welcome message for interactive shells
 
 if _interactive ; then
-  echo ""
   echo "<< $wd/$thisfile"
 fi
 
