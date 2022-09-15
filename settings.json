@@ -1,23 +1,28 @@
 {
-  // VSCode user settings file
-  // On Windows: %APPDATA%\Code\User\settings.json
-  // On Mac:     $HOME/Library/Application Support/Code/User/settings.json
+  "_comment0_" : [
+    "VSCode user settings file locations:",
+    "On Windows: %APPDATA%/Code/User/settings.json",
+    "On Mac:     $HOME/Library/Application Support/Code/User/settings.json"
+  ],
 
-  // Remove CodeLens clutter from UI
+  "_comment1_": "Remove CodeLens clutter from UI",
   "editor.codeLens": false,
   "dotnet-test-explorer.showCodeLens": false,
   "csharp.testsCodeLens.enabled": false,
   "csharp.referencesCodeLens.enabled": false,
 
-  // Tabs and indentation
+  "_comment2_": [
+    "Tabs and indentation",
+    "I want the default indent to be 2 spaces but I also want to respect language specific settings, e.g. Python (4)"
+  ],
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": true,
 
-  // Width indicator
+  "_comment3_": "Add a visible vertical line indicator at 120 characters",
   "editor.rulers": [ 120 ],
 
-  // Code editing behavior
+  "_comment4_": "Code editing behavior",
   "editor.autoClosingBrackets": "never",
   "editor.autoClosingQuotes": "never",
   "editor.formatOnPaste": true,
