@@ -12,7 +12,7 @@
   // Tabs and indentation
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "editor.detectIndentation": false,
+  "editor.detectIndentation": true,
 
   // Width indicator
   "editor.rulers": [ 120 ],
