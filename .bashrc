@@ -173,11 +173,7 @@ alias lls='ls -lSr'                # List files by size
 # want to just take the last line (the final resolved binary) and trim off any
 # spaces.
 #
-if [[ $platform == 'mac' ]]; then
-  emacsbin="/Applications/Emacs.app/Contents/MacOS/Emacs"
-else
-  emacsbin=`which emacs | tail -n 1 | sed "s/\s+//g"`
-fi
+emacsbin=`which emacs | tail -n 1 | sed "s/\s+//g"`
 #
 # Running character mode Emacs with -rv sometimes works and sometimes does not.
 # Assuming that I have set my default terminal foreground and background colors
