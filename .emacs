@@ -24,21 +24,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; >> Platform specific
-
-;;
-;; If running on a FactSet node ... then load the common config
-;;
-(if (file-exists-p "/home/fonix/prd_progs/tools/conf/emacs/fds-common.el")
-    (progn
-      (add-to-list 'load-path "/home/fonix/prd_progs/tools/conf/emacs/")
-      (load "fds-common")))
-
-;; << Platform specific
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; >> Configuration
 
 ;; Turn off the annoying bell
@@ -46,8 +31,8 @@
 
 ;; Turn off the menu bar and tool bar.
 ;; For each: +ve integer arg => turn on, -ve integer arg => turn off.
-(menu-bar-mode 0)
-(tool-bar-mode 0)
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
 ;; No more startup screen
 (setq-default inhibit-startup-message t)
@@ -236,7 +221,7 @@
                             :underline nil :slant normal :weight normal
                             :height 110 :width normal :foundry "outline"
                             :family "Courier New"))))
- 
+
  ;; Settings for elements across all language modes
  '(font-lock-builtin-face ((t (:foreground "slate grey"))))
  '(font-lock-comment-face ((t (:foreground "lime green"))))
@@ -247,7 +232,7 @@
  '(font-lock-type-face ((t (:foreground "pale green"))))
  '(font-lock-variable-name-face ((t (:foreground "khaki1"))))
  '(font-lock-warning-face ((t (:foreground "red"))))
- 
+
  ;; CPerl-mode
  '(cperl-array-face ((t (:foreground "khaki1"))))
  '(cperl-hash-face ((t (:foreground "khaki1"))))
