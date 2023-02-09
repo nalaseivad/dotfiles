@@ -1,7 +1,11 @@
 {
-  "_comment1" : "VS Code Omnisharp global user settings file",
-  "_comment2" : "On Windows: %USERPROFILE%/.omnisharp/omnisharp.json",
-  "_comment3" : "On Mac: ~/.omnisharp/omnisharp.json",
+
+  "_comment0_": [
+    "VS Code Omnisharp global user settings file",
+    "On Windows: %USERPROFILE%/.omnisharp/omnisharp.json",
+    "On Mac:     ~/.omnisharp/omnisharp.json"
+  ],
+
   "FormattingOptions": {
     "enableEditorConfigSupport": false,
     "organizeImports": false,
