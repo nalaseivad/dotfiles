@@ -5,20 +5,29 @@
     "On Mac:     $HOME/Library/Application Support/Code/User/settings.json"
   ],
 
-  "_comment1_": "Remove CodeLens clutter from UI",
+  "_comment1_": "Remove clutter from UI",
   "editor.codeLens": false,
   "dotnet-test-explorer.showCodeLens": false,
   "csharp.testsCodeLens.enabled": false,
   "csharp.referencesCodeLens.enabled": false,
+  "workbench.startupEditor": "none",
 
   "_comment2_": [
     "Tabs and indentation",
+    "Default: 2",
+    "JavaScript and json files: 2",
     "I want the default indent to be 2 spaces but I also want to respect language specific settings, e.g. Python (4)"
   ],
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": true,
-
+  "[javascript]": {
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  
   "_comment3_": "Add a visible vertical line indicator at 120 characters",
   "editor.rulers": [ 120 ],
 
@@ -26,5 +35,14 @@
   "editor.autoClosingBrackets": "never",
   "editor.autoClosingQuotes": "never",
   "editor.formatOnPaste": true,
-  "editor.formatOnType": true
+  "editor.formatOnType": true,
+
+  "_comment5_": "Coverage Gutters settings",
+  "coverage-gutters.coverageFileNames": [
+    "lcov.info",
+    "cov.xml",
+    "coverage.xml",
+    "jacoco.xml",
+    "coverage.cobertura.xml"
+  ] 
 }
